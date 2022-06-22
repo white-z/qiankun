@@ -1,0 +1,35 @@
+import { initGlobalState } from 'qiankun'
+import Vue from 'vue'
+
+// 父应用的初始state
+// Vue.observable是为了让initialState变成可响应：https://cn.vuejs.org/v2/api/#Vue-observable。
+const initialState = Vue.observable({
+  user: {
+<<<<<<< HEAD
+    name: 'White'
+  },
+  count: 0
+=======
+    name: 'zhangsan'
+  }
+>>>>>>> parent of 03d4bd0 (custom)
+})
+
+const actions = initGlobalState(initialState)
+
+actions.onGlobalStateChange((newState, oldState) => {
+  // newState: 变更后的状态; oldState 变更前的状态
+  for (const key in newState) {
+    initialState[key] = newState[key]
+  }
+})
+
+// 定义一个获取state的方法下发到子应用
+actions.getGlobalState = (key) => {
+  // 有key，表示取globalState下的某个子级对象
+  // 无key，表示取全部
+
+  return key ? initialState[key] : initialState
+}
+
+export default actions

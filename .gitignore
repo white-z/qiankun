@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+
+dist
+
+/main/package-lock.json
+/sub-vue/package-lock.json
+/yarn.lock
+/sub-vue3/yarn.lock
+/sub-vue/yarn.lock
+/sub-react/yarn.lock
+/main/yarn.lock
